@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float yMaxPosition, yMinPosition, xMaxPosition, xMinPosition;
+
+    [SerializeField]
+    private GameObject _playerLaser;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        FireLaser();
     }
 
     void PlayerMovement()
@@ -43,6 +47,14 @@ public class Player : MonoBehaviour
         else if (transform.position.x > xMaxPosition)
         {
             transform.position = new Vector3(xMinPosition, transform.position.y, 0);
+        }
+    }
+
+    void FireLaser()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(_playerLaser, transform.position, Quaternion.identity);
         }
     }
 }
