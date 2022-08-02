@@ -236,6 +236,7 @@ MonoBehaviour:
   yMinPosition: 0
   xMaxPosition: 0
   xMinPosition: 0
+  _playerLaser: {fileID: 6522668308889070441, guid: 8eba85b47e14b184ea1255d492e72219, type: 3}
 --- !u!1 &1206783117
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572888832570424806, guid: 8eba85b47e14b184ea1255d492e72219, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8572888832570424806, guid: 8eba85b47e14b184ea1255d492e72219, type: 3}
       propertyPath: m_LocalPosition.z
