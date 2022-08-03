@@ -24,4 +24,18 @@ public class EnemyBehaviour : MonoBehaviour
             transform.position = new Vector3(_newPositionX, 10.0f, 0);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Destroy(this.gameObject);
+        }
+        else if (other.gameObject.tag == "Laser")
+        {
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
+        }
+
+    }
 }
