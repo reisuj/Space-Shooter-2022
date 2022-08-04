@@ -29,13 +29,19 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Player player = other.transform.GetComponent<Player>();
+            
+            if (player != null)
+            {
+                player.Damage();
+            }
             Destroy(this.gameObject);
-        }
-        else if (other.gameObject.tag == "Laser")
+        }        
+        
+        if (other.gameObject.tag == "Laser")
         {
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }
-
     }
 }
