@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private SpawnManager _spawnManager;
     [SerializeField]
-    private float _laserOffset = 0.75f;
+    private float _laserOffset = 1.05f;
     [SerializeField]
     private float _fireRate = 0.25f;
     private float _nextFire = 0.0f;
