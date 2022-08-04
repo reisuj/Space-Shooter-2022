@@ -155,10 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3.5
-  yMaxPosition: 0
-  yMinPosition: 0
-  xMaxPosition: 0
-  xMinPosition: 0
   _playerLaser: {fileID: 4945354957328087004, guid: 8eba85b47e14b184ea1255d492e72219, type: 3}
   _spawnManager: {fileID: 0}
   _laserOffset: 0.75

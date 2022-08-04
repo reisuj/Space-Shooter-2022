@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 3.5f;
 
-    [SerializeField]
-    private float yMaxPosition, yMinPosition, xMaxPosition, xMinPosition;
+    
+    private float _yMaxPosition = 0.0f, _yMinPosition = -5.0f, _xMaxPosition = 11.3f, _xMinPosition = -11.3f;
 
     [SerializeField]
     private GameObject _playerLaser;
@@ -27,11 +27,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        yMaxPosition = 0.0f;
-        yMinPosition = -5.0f;
-        xMaxPosition = 11.3f;
-        xMinPosition = -11.3f;
-
         transform.position = new Vector3(0, 0, 0);
 
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
@@ -58,18 +53,18 @@ public class Player : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         transform.Translate(Vector3.up * Time.deltaTime * _speed * verticalInput);
 
-        float yPosition = Mathf.Clamp(transform.position.y, yMinPosition, yMaxPosition);
+        float yPosition = Mathf.Clamp(transform.position.y, _yMinPosition, _yMaxPosition);
         transform.position = new Vector3(transform.position.x, yPosition, 0);
 
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * _speed * horizontalInput);
-        if (transform.position.x < xMinPosition)
+        if (transform.position.x < _xMinPosition)
         {
-            transform.position = new Vector3(xMaxPosition, transform.position.y, 0);
+            transform.position = new Vector3(_xMaxPosition, transform.position.y, 0);
         }
-        else if (transform.position.x > xMaxPosition)
+        else if (transform.position.x > _xMaxPosition)
         {
-            transform.position = new Vector3(xMinPosition, transform.position.y, 0);
+            transform.position = new Vector3(_xMinPosition, transform.position.y, 0);
         }
     }
 
