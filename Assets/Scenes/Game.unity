@@ -156,10 +156,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3.5
   _playerLaser: {fileID: 4945354957328087004, guid: 8eba85b47e14b184ea1255d492e72219, type: 3}
+  _tripleShot: {fileID: 5946562349147100484, guid: 8f26293d72c578344ad869f4ed4f7189, type: 3}
   _spawnManager: {fileID: 0}
   _laserOffset: 0.75
   _fireRate: 0.25
   _lives: 3
+  _tripleShotActive: 0
 --- !u!212 &81307444
 SpriteRenderer:
   m_ObjectHideFlags: 0

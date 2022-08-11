@@ -13,17 +13,19 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject _playerLaser;
+    [SerializeField]
+    private GameObject _tripleShot;
 
     [SerializeField]
     private SpawnManager _spawnManager;
-    [SerializeField]
-    private float _laserOffset = 1.05f;
     [SerializeField]
     private float _fireRate = 0.25f;
     private float _nextFire = 0.0f;
 
     [SerializeField]
     private int _lives = 3;
+    [SerializeField]
+    private bool _tripleShotActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,9 +72,18 @@ public class Player : MonoBehaviour
 
     void FireLaser()
     {
-        Vector3 laserPosition = new Vector3(transform.position.x, transform.position.y + _laserOffset, 0);
+        Vector3 laserPosition = new Vector3(transform.position.x, transform.position.y, 0);
         _nextFire = Time.time + _fireRate;
-        Instantiate(_playerLaser, laserPosition, Quaternion.identity);
+
+        if (_tripleShotActive == true)
+        {
+            Instantiate(_tripleShot, laserPosition, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(_playerLaser, laserPosition, Quaternion.identity);
+        }
+        
     }
 
     public void Damage()
