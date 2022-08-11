@@ -507,9 +507,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 5060154686436869145, guid: 744d6a44fc2084545983d387c1f7bbf5, type: 3}
-  _powerUp: {fileID: 6384276738761212571, guid: 7df6b767924857445a9e1e6e8df5029b, type: 3}
+  _tripleShotPrefab: {fileID: 6384276738761212571, guid: 7df6b767924857445a9e1e6e8df5029b, type: 3}
   _enemyContainer: {fileID: 242477676}
   _powerupContainer: {fileID: 605610628}
+  _enemySpawnDelay: 5
 --- !u!4 &1923378663
 Transform:
   m_ObjectHideFlags: 0

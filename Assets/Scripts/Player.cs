@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _speed = 3.5f;
-
     
     private float _yMaxPosition = 0.0f, _yMinPosition = -5.0f, _xMaxPosition = 11.3f, _xMinPosition = -11.3f;
 
@@ -16,7 +15,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _tripleShot;
 
-    [SerializeField]
     private SpawnManager _spawnManager;
     [SerializeField]
     private float _fireRate = 0.25f;
