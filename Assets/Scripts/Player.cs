@@ -82,8 +82,7 @@ public class Player : MonoBehaviour
         else
         {
             Instantiate(_playerLaser, laserPosition, Quaternion.identity);
-        }
-        
+        }        
     }
 
     public void Damage()
@@ -95,5 +94,17 @@ public class Player : MonoBehaviour
             _spawnManager.StopSpawning();
             Destroy(this.gameObject);
         }
+    }
+
+    public void TripleShotActive()
+    {
+        _tripleShotActive = true;
+        StartCoroutine(TripleShotPowerDownRoutine());
+    }
+
+    IEnumerator TripleShotPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _tripleShotActive = false;
     }
 }
