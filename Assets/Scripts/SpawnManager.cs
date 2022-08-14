@@ -5,17 +5,16 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _enemy;
-    [SerializeField]
     private GameObject _tripleShotPrefab;
-
-    [SerializeField]
-    private GameObject _enemyContainer;
     [SerializeField]
     private GameObject _powerupContainer;
 
     [SerializeField]
+    private GameObject _enemy;
+    [SerializeField]
     private float _enemySpawnDelay = 5.0f;
+    [SerializeField]
+    private GameObject _enemyContainer;    
 
     private bool _playerIsAlive = true;
 

@@ -5,13 +5,9 @@ using UnityEngine;
 public class Powerup : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 3.0f;
+    private float _speed = 3.5f;
 
-    //ID for Powerups
-    //0 = Triple Shot
-    //1 = Speed
-    //2 = Shields
-    [SerializeField]
+    [SerializeField] // 0 = TripleShot, 1 = Speed, 2 = Shields
     private int _powerupID;
     // Update is called once per frame
     void Update()
@@ -30,17 +26,22 @@ public class Powerup : MonoBehaviour
         {
             Player player = other.transform.GetComponent<Player>();
 
-            if (player != null)
+            switch (_powerupID)
             {
-                player.TripleShotActive();
+                case 0:
+                    Debug.Log("TripleShot Enabled");
+                    player.TripleShotActive();
+                    break;
+                case 1:
+                    Debug.Log("Speed Enabled");
+                    player.SpeedUpActive();
+                    break;
+                case 2:
+                    Debug.Log("Shields Enabled");
+                    break;
+                default:
+                    break;
             }
-
-            // add switch statement
-
-            //Condition 0 is Triple Shot
-            //Consition 1 is SpeedUp
-            //Condition 2 is Shields
-            //Add default condition if no other true
 
             Destroy(this.gameObject);
         }

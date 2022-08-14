@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _speed = 3.5f;
+    private float _speedMultiplier = 2.0f;
     
     private float _yMaxPosition = 0.0f, _yMinPosition = -5.0f, _xMaxPosition = 11.3f, _xMinPosition = -11.3f;
 
@@ -28,7 +29,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
-
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
 
         if (_spawnManager == null)
@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
-
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire)
         {
             FireLaser();
@@ -86,7 +85,6 @@ public class Player : MonoBehaviour
     public void Damage()
     {
         _lives--;
-
         if (_lives < 1)
         {
             _spawnManager.StopSpawning();
@@ -104,5 +102,17 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(5.0f);
         _tripleShotActive = false;
+    }
+
+    public void SpeedUpActive()
+    {
+        _speed *= _speedMultiplier;
+        StartCoroutine(SpeedUpPowerDownRoutine());
+    }
+
+    IEnumerator SpeedUpPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _speed /= _speedMultiplier;
     }
 }
