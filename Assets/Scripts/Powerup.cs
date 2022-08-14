@@ -35,6 +35,13 @@ public class Powerup : MonoBehaviour
                 player.TripleShotActive();
             }
 
+            // add switch statement
+
+            //Condition 0 is Triple Shot
+            //Consition 1 is SpeedUp
+            //Condition 2 is Shields
+            //Add default condition if no other true
+
             Destroy(this.gameObject);
         }
     }
