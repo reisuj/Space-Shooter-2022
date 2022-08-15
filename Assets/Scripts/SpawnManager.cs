@@ -64,7 +64,7 @@ public class SpawnManager : MonoBehaviour
     {
 
         Vector3 powerupPosition = new Vector3(Random.Range(-9.5f, 9.5f), 10.0f, 0);
-        int randomPowerUp = Random.Range(0, 2);
+        int randomPowerUp = Random.Range(0, 3);
         GameObject newPowerup = Instantiate(_powerups[randomPowerUp], powerupPosition, Quaternion.identity);
         newPowerup.transform.parent = _powerupContainer.transform;
     }
