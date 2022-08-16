@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private float _yMaxPosition = 0.0f, _yMinPosition = -5.0f, _xMaxPosition = 11.3f, _xMinPosition = -11.3f;
 
     [SerializeField]
+    private GameObject _playerShield;
+    [SerializeField]
     private GameObject _playerLaser;
     [SerializeField]
     private GameObject _tripleShot;
@@ -89,6 +91,7 @@ public class Player : MonoBehaviour
         if (_isShieldActive == true)
         {
             _isShieldActive = false;
+            _playerShield.SetActive(false);
             return;
         }
 
@@ -127,5 +130,6 @@ public class Player : MonoBehaviour
     public void ShieldActive()
     {
         _isShieldActive = true;
+        _playerShield.SetActive(true);
     }
 }
