@@ -37,19 +37,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(0, 0, 0);
-        _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
-        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
-
-        if (_spawnManager == null)
-        {
-            Debug.LogError("The SpawnManager is null");
-        }
-
-        if (_uiManager == null)
-        {
-            Debug.LogError("The UIManager is NULL.");
-        }
+        GetHandles();
+        NullChecking();
+        transform.position = new Vector3(0, 0, 0);        
     }
 
     // Update is called once per frame
@@ -72,6 +62,7 @@ public class Player : MonoBehaviour
 
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * _speed * horizontalInput);
+
         if (transform.position.x < _xMinPosition)
         {
             transform.position = new Vector3(_xMaxPosition, transform.position.y, 0);
@@ -108,6 +99,7 @@ public class Player : MonoBehaviour
 
         _lives--;
         _uiManager.UpdateLives(_lives);
+
         if (_lives < 1)
         {
             _spawnManager.StopSpawning();
@@ -149,5 +141,24 @@ public class Player : MonoBehaviour
     {
         _score += 10;
         _uiManager.UpdateScore(_score);
+    }
+
+    private void GetHandles()
+    {
+        _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+    }
+
+    private void NullChecking()
+    {
+        if (_spawnManager == null)
+        {
+            Debug.LogError("The SpawnManager is null");
+        }
+
+        if (_uiManager == null)
+        {
+            Debug.LogError("The UIManager is NULL.");
+        }
     }
 }
