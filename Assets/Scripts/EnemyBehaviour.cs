@@ -47,8 +47,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void EnemyDeath()
     {
-        _enemySpeed = 0.0f;
         _animator.SetTrigger("OnEnemyDeath");
+        _enemySpeed = 0.0f;        
         Destroy(this.gameObject, 2.5f);
     }
 

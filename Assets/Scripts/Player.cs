@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     {
         GetHandles();
         NullChecking();
-        transform.position = new Vector3(0, 0, 0);        
+        transform.position = new Vector3(0, -4.0f, 0);        
     }
 
     // Update is called once per frame
