@@ -1238,6 +1238,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4849550793794254722, guid: d77930bdd8b46f340be9f602311735ce, type: 3}
+      propertyPath: _spawnmanager
+      value: 
+      objectReference: {fileID: 1923378662}
     - target: {fileID: 3582619999069202327, guid: d77930bdd8b46f340be9f602311735ce, type: 3}
       propertyPath: m_Name
       value: Asteroid
