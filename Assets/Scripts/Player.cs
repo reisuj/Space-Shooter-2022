@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _lives = 3;
     [SerializeField]
+    private GameObject _rightEngine;
+    [SerializeField]
+    private GameObject _leftEngine;
+    [SerializeField]
     private bool _tripleShotActive = false;
     [SerializeField]
     private bool _isShieldActive = false;
@@ -99,6 +103,16 @@ public class Player : MonoBehaviour
 
         _lives--;
         _uiManager.UpdateLives(_lives);
+
+        if (_lives == 2)
+        {
+            _rightEngine.SetActive(true);
+        }
+
+        if (_lives == 1)
+        {
+            _leftEngine.SetActive(true);
+        }
 
         if (_lives < 1)
         {
