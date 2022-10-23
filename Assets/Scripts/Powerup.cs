@@ -9,6 +9,12 @@ public class Powerup : MonoBehaviour
 
     [SerializeField] // 0 = TripleShot, 1 = Speed, 2 = Shields
     private int _powerupID;
+
+    private AudioSource _audioSource;
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
     // Update is called once per frame
     void Update()
     {

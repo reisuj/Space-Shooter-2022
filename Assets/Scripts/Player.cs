@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     private UIManager _uiManager;
     [SerializeField]
     private AudioClip _laserAudio;
+    [SerializeField]
+    private AudioClip _powerupAudio;
     private AudioSource _audioSource;
 
     // Start is called before the first frame update
@@ -129,6 +131,7 @@ public class Player : MonoBehaviour
     public void TripleShotActive()
     {
         _tripleShotActive = true;
+        PlayPowerupSound();
         StartCoroutine(TripleShotPowerDownRoutine());
     }
 
@@ -141,6 +144,7 @@ public class Player : MonoBehaviour
     public void SpeedUpActive()
     {
         _speed *= _speedMultiplier;
+        PlayPowerupSound();
         StartCoroutine(SpeedUpPowerDownRoutine());
     }
 
@@ -153,6 +157,7 @@ public class Player : MonoBehaviour
     public void ShieldActive()
     {
         _isShieldActive = true;
+        PlayPowerupSound();
         _playerShield.SetActive(true);
     }
 
@@ -185,5 +190,10 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("The AudioSource is NULL");
         }
+    }
+
+    private void PlayPowerupSound()
+    {
+        _audioSource.PlayOneShot(_powerupAudio);
     }
 }
