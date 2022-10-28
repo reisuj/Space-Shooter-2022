@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Laser
   - Explosion
+  - PlayerLaser
+  - EnemyLaser
   layers:
   - Default
   - TransparentFX
