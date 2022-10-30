@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 3.5f;
     private float _speedMultiplier = 2.0f;
+    [SerializeField]
+    private float _baseSpeed = 5.0f;
+    [SerializeField]
+    private float _thrusterSpeed = 10.0f;
     
     private float _yMaxPosition = 0.0f, _yMinPosition = -5.0f, _xMaxPosition = 11.3f, _xMinPosition = -11.3f;
 
@@ -59,6 +63,7 @@ public class Player : MonoBehaviour
         {
             FireLaser();
         }
+        ThrusterControl();
     }
 
     void PlayerMovement()
@@ -79,6 +84,18 @@ public class Player : MonoBehaviour
         else if (transform.position.x > _xMaxPosition)
         {
             transform.position = new Vector3(_xMinPosition, transform.position.y, 0);
+        }
+    }
+
+    void ThrusterControl()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            _speed = _thrusterSpeed;
+        }
+        else
+        {
+            _speed = _baseSpeed;
         }
     }
 
