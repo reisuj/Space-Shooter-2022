@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _fireRate = 0.25f;
     private float _nextFire = 0.0f;
+    private int _shieldStrength;
+    private Renderer _shieldColor;
+    private Color _shieldDefaultColor;
 
     [SerializeField]
     private int _lives = 3;
@@ -120,8 +123,8 @@ public class Player : MonoBehaviour
     {
         if (_isShieldActive == true)
         {
-            _isShieldActive = false;
-            _playerShield.SetActive(false);
+            _shieldStrength--;
+            ShieldCheck();
             return;
         }
 
@@ -173,9 +176,40 @@ public class Player : MonoBehaviour
 
     public void ShieldActive()
     {
-        _isShieldActive = true;
+        
         PlayPowerupSound();
         _playerShield.SetActive(true);
+    }
+
+    public void ShieldPickedUp()
+    {
+        if (_shieldStrength < 3)
+        {
+            _shieldStrength++;
+        }
+        _isShieldActive = true;
+        _playerShield.SetActive(true);
+        ShieldCheck();
+    }
+
+    public void ShieldCheck()
+    {
+        switch (_shieldStrength)
+        {
+            case 0:
+                _isShieldActive = false;
+                _playerShield.SetActive(false);
+                break;
+            case 1:
+                _shieldColor.material.SetColor("_Color", Color.red);
+                break;
+            case 2:
+                _shieldColor.material.SetColor("_Color", Color.yellow);
+                break;
+            case 3:
+                _shieldColor.material.SetColor("_Color", _shieldDefaultColor);
+                break;
+        }
     }
 
     public void AddScore(int points)
@@ -189,6 +223,8 @@ public class Player : MonoBehaviour
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _audioSource = GetComponent<AudioSource>();
+        _shieldColor = _playerShield.GetComponent<Renderer>();
+        _shieldDefaultColor = _playerShield.GetComponent<Renderer>().material.GetColor("_Color");
     }
 
     private void NullChecking()
