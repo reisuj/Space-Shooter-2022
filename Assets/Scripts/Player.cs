@@ -231,17 +231,27 @@ public class Player : MonoBehaviour
     {
         if (_spawnManager == null)
         {
-            Debug.LogError("The SpawnManager is null");
+            Debug.LogError("The SpawnManager is NULL!");
         }
 
         if (_uiManager == null)
         {
-            Debug.LogError("The UIManager is NULL.");
+            Debug.LogError("The UIManager is NULL!");
         }
 
         if (_audioSource == null)
         {
-            Debug.LogError("The AudioSource is NULL");
+            Debug.LogError("The AudioSource is NULL!");
+        }
+
+        if (_shieldColor == null)
+        {
+            Debug.LogError("Shield Color is NULL!");
+        }
+
+        if (_shieldDefaultColor == null)
+        {
+            Debug.LogError("Default Shield Color is NULL!");
         }
     }
 

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private int[] _powerUpID;
-
     [SerializeField]
     private GameObject[] _powerups;
     [SerializeField]
@@ -20,18 +18,6 @@ public class SpawnManager : MonoBehaviour
 
     private bool _playerIsAlive = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        _powerUpID = new int[3];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator SpawnEnemyRoutine()
     {
         yield return new WaitForSeconds(3.0f);
@@ -45,7 +31,7 @@ public class SpawnManager : MonoBehaviour
     
     void SpawnEnemy()
     {
-        Vector3 enemyPosition = new Vector3(Random.Range(-9.5f, 9.5f), 10.0f, 0);
+        Vector3 enemyPosition = new Vector3(Random.Range(-9.5f, 9.5f), 7.0f, 0);
         GameObject newEnemy =  Instantiate(_enemy, enemyPosition, Quaternion.identity);
         newEnemy.transform.parent = _enemyContainer.transform;
     }
