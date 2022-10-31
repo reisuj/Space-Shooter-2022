@@ -76,4 +76,9 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
+
+    public void UpdateAmmo(int currentAmmo)
+    {
+
+    }
 }

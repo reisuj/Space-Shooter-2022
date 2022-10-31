@@ -6,11 +6,11 @@ public class Powerup : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 3.5f;
-
     [SerializeField] // 0 = TripleShot, 1 = Speed, 2 = Shields
     private int _powerupID;
 
     private AudioSource _audioSource;
+
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();

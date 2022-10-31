@@ -4,57 +4,71 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    [Header("Movement Settings")]
     [SerializeField]
     private float _speed = 3.5f;
-    private float _speedMultiplier = 2.0f;
     [SerializeField]
     private float _baseSpeed = 5.0f;
+    private float _speedMultiplier = 2.0f;    
     [SerializeField]
-    private float _thrusterSpeed = 10.0f;
-    
+    private float _thrusterSpeed = 10.0f;    
     private float _yMaxPosition = 0.0f, _yMinPosition = -5.0f, _xMaxPosition = 11.3f, _xMinPosition = -11.3f;
 
+    [Header("Player Weapon Settings")]
     [SerializeField]
-    private GameObject _playerShield;
+    private int _maxAmmo = 15;
+    [SerializeField]
+    private int _currentAmmo;
     [SerializeField]
     private GameObject _playerLaser;
     [SerializeField]
     private GameObject _tripleShot;
-
-    private SpawnManager _spawnManager;
+    [SerializeField]
+    private bool _tripleShotActive = false;
     [SerializeField]
     private float _fireRate = 0.25f;
     private float _nextFire = 0.0f;
+
+    [Header("Player Shield Settings")]
+    [SerializeField]
+    private GameObject _playerShield;
+    [SerializeField]
+    private bool _isShieldActive = false;
     private int _shieldStrength;
     private Renderer _shieldColor;
     private Color _shieldDefaultColor;
 
-    [SerializeField]
-    private int _lives = 3;
-    [SerializeField]
-    private GameObject _rightEngine;
-    [SerializeField]
-    private GameObject _leftEngine;
-    [SerializeField]
-    private bool _tripleShotActive = false;
-    [SerializeField]
-    private bool _isShieldActive = false;
-    [SerializeField]
-    private int _score = 0;
-
-    private UIManager _uiManager;
+    [Header("Player Audio Settings")]
     [SerializeField]
     private AudioClip _laserAudio;
     [SerializeField]
     private AudioClip _powerupAudio;
     private AudioSource _audioSource;
 
+    [Header("Player Misc Settings")]
+    private SpawnManager _spawnManager;
+    private UIManager _uiManager;
+    [SerializeField]
+    private int _lives = 3;
+    [SerializeField]
+    private int _score = 0;
+    [SerializeField]
+    private GameObject _rightEngine;
+    [SerializeField]
+    private GameObject _leftEngine;
+    
+    
+    
+
+    
+    
+
     // Start is called before the first frame update
     void Start()
     {
         GetHandles();
         NullChecking();
+        _currentAmmo = _maxAmmo;
         transform.position = new Vector3(0, -4.0f, 0);        
     }
 
@@ -62,11 +76,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire)
+        ThrusterControl();
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire && _currentAmmo > 0)
         {
             FireLaser();
+            _currentAmmo--;
+            _uiManager.UpdateAmmo(_currentAmmo);
         }
-        ThrusterControl();
     }
 
     void PlayerMovement()
