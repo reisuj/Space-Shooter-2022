@@ -46,6 +46,10 @@ public class Powerup : MonoBehaviour
                     Debug.Log("Shields Enabled");
                     player.ShieldPickedUp();
                     break;
+                case 3:
+                    Debug.Log("Ammo Collected");
+                    player.AmmoCollected(Random.Range(5, 16));
+                    break;
                 default:
                     break;
             }

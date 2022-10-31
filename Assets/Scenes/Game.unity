@@ -1970,6 +1970,7 @@ MonoBehaviour:
   - {fileID: 6384276738761212571, guid: 7df6b767924857445a9e1e6e8df5029b, type: 3}
   - {fileID: 2906851694824231563, guid: ae03e0a7f7c5fd543a98b96bee779a74, type: 3}
   - {fileID: 3784234058199147025, guid: 3378e74ce5018cc41bd637fcc9c94402, type: 3}
+  - {fileID: 1128872148408966827, guid: 3261d4406ca23ce43a2ebd273d1bb9b7, type: 3}
   _powerupContainer: {fileID: 605610628}
   _enemy: {fileID: 5060154686436869145, guid: 744d6a44fc2084545983d387c1f7bbf5, type: 3}
   _enemySpawnDelay: 5

@@ -229,6 +229,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AmmoCollected(int ammoAmount)
+    {
+        _currentAmmo += ammoAmount;        
+        if (_currentAmmo > _maxAmmo)
+        {
+            _currentAmmo = _maxAmmo;
+        }
+        _uiManager.UpdateAmmo(_currentAmmo);
+    }
+
     public void AddScore(int points)
     {
         _score += 10;
