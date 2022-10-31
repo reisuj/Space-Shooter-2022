@@ -144,17 +144,8 @@ public class Player : MonoBehaviour
         }
 
         _lives--;
-        _uiManager.UpdateLives(_lives);
-
-        if (_lives == 2)
-        {
-            _rightEngine.SetActive(true);
-        }
-
-        if (_lives == 1)
-        {
-            _leftEngine.SetActive(true);
-        }
+        CheckEngineDamage(_lives);
+        _uiManager.UpdateLives(_lives);        
 
         if (_lives < 1)
         {
@@ -229,6 +220,23 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void CheckEngineDamage(int lives)
+    {
+        if (lives == 3)
+        {
+            _rightEngine.SetActive(false);
+        }
+        if (lives == 2)
+        {
+            _rightEngine.SetActive(true);
+            _leftEngine.SetActive(false);
+        }
+        else if (lives == 1)
+        {
+            _leftEngine.SetActive(true);
+        }
+    }
+
     public void AmmoCollected(int ammoAmount)
     {
         _currentAmmo += ammoAmount;        
@@ -237,6 +245,17 @@ public class Player : MonoBehaviour
             _currentAmmo = _maxAmmo;
         }
         _uiManager.UpdateAmmo(_currentAmmo);
+    }
+
+    public void HealthCollected()
+    {
+        _lives++;
+        if (_lives > 3)
+        {
+            _lives = 3;
+        }
+        CheckEngineDamage(_lives);
+        _uiManager.UpdateLives(_lives);
     }
 
     public void AddScore(int points)

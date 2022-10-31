@@ -50,6 +50,10 @@ public class Powerup : MonoBehaviour
                     Debug.Log("Ammo Collected");
                     player.AmmoCollected(Random.Range(5, 16));
                     break;
+                case 4:
+                    Debug.Log("Health Colected");
+                    player.HealthCollected();
+                    break;
                 default:
                     break;
             }
