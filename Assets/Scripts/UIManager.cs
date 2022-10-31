@@ -17,9 +17,15 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text _restartText;
     [SerializeField]
+    private Text _ammoCountText;
+    [SerializeField]
+    private Text _ammoDepletedText;
+    [SerializeField]
     private Sprite[] _liveSprites;
+    private int _maxAmmo = 15;
 
     private bool _isGameOver;
+    private bool _ammoDepleted = false;
     
     // Start is called before the first frame update
     void Start()
@@ -27,7 +33,7 @@ public class UIManager : MonoBehaviour
         _scoreText.text = "Score: " + _currentScore;
         _gameOverText.gameObject.SetActive(false);
         _restartText.gameObject.SetActive(false);
-        _isGameOver = false;
+        _isGameOver = false;        
     }
 
     // Update is called once per frame
@@ -79,6 +85,31 @@ public class UIManager : MonoBehaviour
 
     public void UpdateAmmo(int currentAmmo)
     {
+        _ammoCountText.text = "Ammo: " + currentAmmo + "/" + _maxAmmo;
+        if (currentAmmo < 1)
+        {
+            AmmoDepleted();
+        }
+        else
+        {
+            _ammoDepleted = false;
+        }
+    }
 
+    public void AmmoDepleted()
+    {
+        _ammoDepleted = true;
+        StartCoroutine(AmmoDepletedRoutine());
+    }
+
+    IEnumerator AmmoDepletedRoutine()
+    {
+        while (_ammoDepleted == true)
+        {
+            _ammoDepletedText.text = "AMMO DEPLETED!";
+            yield return new WaitForSeconds(0.5f);
+            _ammoDepletedText.text = "";
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

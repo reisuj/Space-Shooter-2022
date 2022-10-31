@@ -57,11 +57,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _leftEngine;
     
-    
-    
-
-    
-    
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +64,7 @@ public class Player : MonoBehaviour
         GetHandles();
         NullChecking();
         _currentAmmo = _maxAmmo;
-        transform.position = new Vector3(0, -4.0f, 0);        
+        transform.position = new Vector3(0, -4.0f, 0);      
     }
 
     // Update is called once per frame
@@ -79,9 +74,11 @@ public class Player : MonoBehaviour
         ThrusterControl();
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire && _currentAmmo > 0)
         {
-            FireLaser();
-            _currentAmmo--;
-            _uiManager.UpdateAmmo(_currentAmmo);
+            FireLaser();            
+        }
+        else if (_currentAmmo < 1)
+        {
+            _uiManager.AmmoDepleted();
         }
     }
 
@@ -120,6 +117,8 @@ public class Player : MonoBehaviour
 
     void FireLaser()
     {
+        _currentAmmo--;
+        _uiManager.UpdateAmmo(_currentAmmo);
         Vector3 laserPosition = new Vector3(transform.position.x, transform.position.y, 0);
         _nextFire = Time.time + _fireRate;
 
@@ -166,6 +165,8 @@ public class Player : MonoBehaviour
 
     public void TripleShotActive()
     {
+        _currentAmmo += 5;
+        _uiManager.UpdateAmmo(_currentAmmo);
         _tripleShotActive = true;
         PlayPowerupSound();
         StartCoroutine(TripleShotPowerDownRoutine());
@@ -234,6 +235,11 @@ public class Player : MonoBehaviour
         _uiManager.UpdateScore(_score);
     }
 
+    private void PlayPowerupSound()
+    {
+        _audioSource.PlayOneShot(_powerupAudio);
+    }
+
     private void GetHandles()
     {
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
@@ -269,10 +275,5 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Default Shield Color is NULL!");
         }
-    }
-
-    private void PlayPowerupSound()
-    {
-        _audioSource.PlayOneShot(_powerupAudio);
-    }
+    }    
 }
