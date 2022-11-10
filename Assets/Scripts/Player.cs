@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool _tripleShotActive = false;
     [SerializeField]
+    private bool _multiShotActive = false;
+    [SerializeField]
     private float _fireRate = 0.25f;
     private float _nextFire = 0.0f;
 
@@ -126,6 +128,10 @@ public class Player : MonoBehaviour
         {
             Instantiate(_tripleShot, laserPosition, Quaternion.identity);
         }
+        else if(_multiShotActive == true)
+        {
+            MultiShot();
+        }
         else
         {
             Instantiate(_playerLaser, laserPosition, Quaternion.identity);
@@ -169,13 +175,39 @@ public class Player : MonoBehaviour
         _tripleShotActive = false;
     }
 
+    public void MultiShotActive()
+    {
+        _tripleShotActive = false;
+        _multiShotActive = true;
+        AmmoCollected(5);
+        MultiShotPowerDownRoutine();
+    }
+
+    public void MultiShot()
+    {
+        for (int fireAngle = -67; fireAngle < 83; fireAngle += 15)
+        {
+            for (int fireangle = -67; fireangle < 83; fireangle += 15)
+            {
+                GameObject newBullet = Instantiate(_playerLaser, (new Vector3(transform.position.x, transform.position.y, 0)), Quaternion.identity);
+                newBullet.transform.eulerAngles = Vector3.forward * fireangle;
+            }
+        }
+    }
+
+    IEnumerator MultiShotPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _multiShotActive = false;
+    }
+
     public void SpeedUpActive()
     {
         _speed *= _speedMultiplier;
         PlayPowerupSound();
         StartCoroutine(SpeedUpPowerDownRoutine());
     }
-
+    
     IEnumerator SpeedUpPowerDownRoutine()
     {
         yield return new WaitForSeconds(5.0f);

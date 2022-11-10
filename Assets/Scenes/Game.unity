@@ -163,6 +163,7 @@ MonoBehaviour:
   _playerLaser: {fileID: 4945354957328087004, guid: 8eba85b47e14b184ea1255d492e72219, type: 3}
   _tripleShot: {fileID: 5946562349147100484, guid: 8f26293d72c578344ad869f4ed4f7189, type: 3}
   _tripleShotActive: 0
+  _multiShotActive: 0
   _fireRate: 0.25
   _playerShield: {fileID: 124304235}
   _isShieldActive: 0
@@ -1971,6 +1972,8 @@ MonoBehaviour:
   - {fileID: 2906851694824231563, guid: ae03e0a7f7c5fd543a98b96bee779a74, type: 3}
   - {fileID: 3784234058199147025, guid: 3378e74ce5018cc41bd637fcc9c94402, type: 3}
   - {fileID: 1128872148408966827, guid: 3261d4406ca23ce43a2ebd273d1bb9b7, type: 3}
+  - {fileID: 3279577279775292030, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
+  - {fileID: 8248088347930459287, guid: 214d171b5f0ce7b47b77c471969c4ae7, type: 3}
   _powerupContainer: {fileID: 605610628}
   _enemy: {fileID: 5060154686436869145, guid: 744d6a44fc2084545983d387c1f7bbf5, type: 3}
   _enemySpawnDelay: 5
@@ -2186,63 +2189,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &3279577279402651499
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.1142986
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.433467
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292016, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279577279775292030, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
-      propertyPath: m_Name
-      value: HealthPowerup
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ffe9aa5d4caaab441978db5f9c8b2185, type: 3}
 --- !u!1001 &4178769159579191097
 PrefabInstance:
   m_ObjectHideFlags: 0

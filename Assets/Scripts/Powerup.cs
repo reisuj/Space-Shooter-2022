@@ -51,8 +51,12 @@ public class Powerup : MonoBehaviour
                     player.AmmoCollected(Random.Range(5, 16));
                     break;
                 case 4:
-                    Debug.Log("Health Colected");
+                    Debug.Log("Health Collected");
                     player.HealthCollected();
+                    break;
+                case 5:
+                    Debug.Log("MultiShot Enabled");
+                    player.MultiShotActive();
                     break;
                 default:
                     break;
