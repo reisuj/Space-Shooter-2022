@@ -190,6 +190,12 @@ public class Player : MonoBehaviour
             return;
         }
 
+        CameraControl cameraControl = Camera.main.GetComponent<CameraControl>();
+        if (cameraControl != null)
+        {
+            cameraControl.CamShake();
+        }
+
         _lives--;
         CheckEngineDamage(_lives);
         _uiManager.UpdateLives(_lives);        

@@ -243,7 +243,7 @@ Transform:
   - {fileID: 1743943698}
   - {fileID: 1471325735}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &81307446
 BoxCollider2D:
@@ -1117,6 +1117,8 @@ GameObject:
   - component: {fileID: 1206783119}
   - component: {fileID: 1206783118}
   - component: {fileID: 1206783121}
+  - component: {fileID: 1206783123}
+  - component: {fileID: 1206783122}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1249,6 +1251,37 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!95 &1206783122
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206783117}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92c6873b04a13e445a68c6b34748681c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1206783123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206783117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1a10ac0af4da04da20583fc591cca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1270215286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2351,7 +2384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8187496818284201923, guid: d77930bdd8b46f340be9f602311735ce, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8187496818284201923, guid: d77930bdd8b46f340be9f602311735ce, type: 3}
       propertyPath: m_LocalPosition.x
