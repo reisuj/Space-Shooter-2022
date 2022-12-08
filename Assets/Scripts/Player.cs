@@ -9,9 +9,7 @@ public class Player : MonoBehaviour
     private float _speed = 3.5f;
     [SerializeField]
     private float _baseSpeed = 5.0f;
-    private float _speedMultiplier = 2.0f;    
-    [SerializeField]
-    private float _thrusterSpeed = 10.0f;    
+    private float _speedMultiplier = 2.0f;       
     private float _yMaxPosition = 0.0f, _yMinPosition = -5.0f, _xMaxPosition = 11.3f, _xMinPosition = -11.3f;
 
     [Header("Player Weapon Settings")]
@@ -58,18 +56,32 @@ public class Player : MonoBehaviour
     private GameObject _rightEngine;
     [SerializeField]
     private GameObject _leftEngine;
-    
 
-    // Start is called before the first frame update
+    [Header("Boost Bar Settings")]
+    [SerializeField]
+    private BoostBar _boostbar;
+    [SerializeField]
+    private float _thrusterSpeed = 10.0f;
+    [SerializeField]
+    private int _thrusterLevel = 1000;
+    [SerializeField]
+    private bool _thrustAvailable;
+    private bool _thrusterRegen = false;
+    private int _thrusterMax = 1000;
+
+
     void Start()
     {
         GetHandles();
         NullChecking();
         _currentAmmo = _maxAmmo;
+        _thrustAvailable = true;
+        _boostbar.SetStartBooster(_thrusterMax);
+        _boostbar.SetStartBooster(_thrusterMax);
+        _thrusterLevel = _thrusterMax;
         transform.position = new Vector3(0, -4.0f, 0);      
     }
 
-    // Update is called once per frame
     void Update()
     {
         PlayerMovement();
@@ -107,15 +119,44 @@ public class Player : MonoBehaviour
 
     void ThrusterControl()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && _thrustAvailable == true)
         {
-            _speed = _thrusterSpeed;
-        }
-        else
-        {
-            _speed = _baseSpeed;
+            StartCoroutine(ThrusterActivated());
         }
     }
+
+    private IEnumerator ThrusterActivated()
+    {
+        _speed = _thrusterSpeed;
+        while (Input.GetKey(KeyCode.LeftShift) && _thrusterLevel > 0)
+        {
+            yield return new WaitForSeconds(0.5f);
+            _thrusterLevel = _thrusterLevel - 1;
+            _boostbar.SetBooster(_thrusterLevel);
+            if (_thrusterLevel < 1)
+            {
+                _thrustAvailable = false;
+            }
+        }
+        _speed = _baseSpeed;
+        yield return new WaitForSeconds(2.0f);
+        StartCoroutine(ThrusterRecharge());
+    }
+
+    private IEnumerator ThrusterRecharge()
+    {
+        _thrusterRegen = true;
+        yield return new WaitForSeconds(1.0f);
+        while (_thrusterLevel < _thrusterMax && _thrusterRegen == true)
+        {
+            _thrusterLevel++;
+            _boostbar.SetBooster(_thrusterLevel);
+            yield return new WaitForSeconds(1.0f);
+        }
+        _thrustAvailable = true;
+        _thrusterRegen = false;
+    }
+
 
     void FireLaser()
     {
