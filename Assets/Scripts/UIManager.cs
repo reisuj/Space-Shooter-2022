@@ -33,7 +33,8 @@ public class UIManager : MonoBehaviour
         _scoreText.text = "Score: " + _currentScore;
         _gameOverText.gameObject.SetActive(false);
         _restartText.gameObject.SetActive(false);
-        _isGameOver = false;        
+        _isGameOver = false;
+        UpdateAmmo(_maxAmmo);
     }
 
     // Update is called once per frame
