@@ -17,12 +17,16 @@ public class EnemyBehaviour : MonoBehaviour
     private float _fireTime = -1;
     private bool _canFire = true;
 
+    private int movementTypeID;
+
 
     // Start is called before the first frame update
     void Start()
     {
         GetHandles();
         NullChecking();
+
+        movementTypeID = Random.Range(1, 4);
     }
 
     // Update is called once per frame
@@ -46,7 +50,22 @@ public class EnemyBehaviour : MonoBehaviour
 
     void CalculateMovement()
     {
-        transform.Translate(Vector3.down * Time.deltaTime * _enemySpeed);
+        switch (movementTypeID)
+        {
+            case 1:
+                transform.Translate((Vector3.down + Vector3.left) * (_enemySpeed / 2) * Time.deltaTime);
+                break;
+            case 2:
+                transform.Translate((Vector3.down + Vector3.right) * (_enemySpeed / 2) * Time.deltaTime);
+                break;
+            case 3:
+                transform.Translate(Vector3.down * Time.deltaTime * _enemySpeed);
+                break;
+            default:
+                break;
+        }
+
+        
 
         if (transform.position.y < -8.0f)
         {
