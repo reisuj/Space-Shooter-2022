@@ -227,7 +227,7 @@ public class Player : MonoBehaviour
         _tripleShotActive = false;
         _multiShotActive = true;
         AmmoCollected(5);
-        MultiShotPowerDownRoutine();
+        StartCoroutine(MultiShotPowerDownRoutine());
     }
 
     public void MultiShot()
